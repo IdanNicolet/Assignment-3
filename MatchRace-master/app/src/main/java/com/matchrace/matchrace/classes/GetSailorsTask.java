@@ -46,27 +46,24 @@ public class GetSailorsTask extends AsyncTask<String, Integer, Map<String, LatLn
 	protected Map<String, LatLng> doInBackground(String... urls) {
 		Map<String, LatLng> sailorsLatLng = new HashMap<String, LatLng>();
 		try {
-			JSONObject json = JsonReader.readJsonFromUrl(urls[0]);
+			JSONObject json = JsonReader.readJsonFromUrl(urls[0] + "&Event=" + event);
 			JSONArray jsonArray = json.getJSONArray("positions");
-			for (int i = 0; i < jsonArray.length(); i++) {
+			for (int i = 0; i < jsonArray.length(); i++)
+            {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
-				if (jsonObj.getString("info").startsWith(C.SAILOR_PREFIX)) {
-					if (jsonObj.getString("event").equals(event)) {
-						String sailorFullName = jsonObj.getString("info");
-						if (sailorFullName.equals((fullUserName))) {
-							continue;
-						}
-						String lat = jsonObj.getString("lat");
-						String lng = jsonObj.getString("lon");
-						if (Double.parseDouble(lat) == 0 || Double.parseDouble(lng) == 0) {
-							continue;
-						}
-						String sailorName = sailorFullName.split("_")[0].substring(6);
-						sailorsLatLng.put(sailorName, new LatLng(Double.parseDouble(lat), Double.parseDouble(lng)));
-
-						Log.i(name + " " + sailorName + " " + event, "Lat: " + lat + ", Lng: " + lng);
-					}
+				String sailorFullName = jsonObj.getString("name");
+				if (sailorFullName.equals((name))) {
+					continue;
 				}
+				String lat = jsonObj.getString("lat");
+				String lng = jsonObj.getString("lon");
+				if (Double.parseDouble(lat) == 0 || Double.parseDouble(lng) == 0) {
+					continue;
+				}
+				String sailorName = sailorFullName;
+				sailorsLatLng.put(sailorName, new LatLng(Double.parseDouble(lat), Double.parseDouble(lng)));
+
+				Log.i(name + " " + sailorName + " " + event, "Lat: " + lat + ", Lng: " + lng);
 			}
 			return sailorsLatLng;
 		}

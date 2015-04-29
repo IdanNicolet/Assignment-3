@@ -55,8 +55,7 @@ public class SendDataHThread extends HandlerThread {
 				urlConnection.disconnect();
 			}
 			urlConnection.disconnect();
-		}
-		catch (MalformedURLException e) {
+		}edURLException e) {
 			Log.i(name, "MalformedURLException");
 		}
 		catch (IOException e) {
