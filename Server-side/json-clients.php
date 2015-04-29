@@ -100,10 +100,6 @@ if ($mode == "clients")
 
 
 
-
-
-
-
 /*	
 	echo "{\"positions\":[<br>";
 	for ($i = 0; $i < mysql_num_rows($result)-1; $i++)
