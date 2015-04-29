@@ -46,6 +46,9 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 	@Override
 	protected Map<Long, LatLng> doInBackground(String... urls) {
 		Map<Long, LatLng> sortedLatLngs = new TreeMap<Long, LatLng>();
+
+
+
 		try {
             StringTokenizer st = new StringTokenizer(fullUserName,"_");
             st.nextElement();
@@ -72,7 +75,9 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 
 			}
 
-			JSONObject jsonClients = JsonReader.readJsonFromUrl(urls[1]);
+
+            String s = urls[1]+"Buoys&Event="+event;
+			JSONObject jsonClients = JsonReader.readJsonFromUrl(s);
 			jsonArray = jsonClients.getJSONArray("Buoys");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
@@ -82,13 +87,13 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 					if (Double.parseDouble(lat) == 0 || Double.parseDouble(lng) == 0) {
 						break;
 					}
-					String time = jsonObj.getString("time");
+					String time = "0";
 					LatLng latLng = new LatLng(Double.parseDouble(lat), Double.parseDouble(lng));
 
 					// Adds sailor's last data to TreeMap.
 					sortedLatLngs.put(Long.parseLong(time), latLng);
 
-					Log.i(fullUserName, "Lat: " + lat + ", Lng: " + lng);
+				//	Log.i(fullUserName, "Lat: " + lat + ", Lng: " + lng);
 					break;
 
 			}
@@ -97,10 +102,12 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 		}
 		catch (JSONException e) {
 			Log.i(name, "JSONException");
+            e.printStackTrace();
 			return null;
 		}
 		catch (IOException e) {
 			Log.i(name, "IOException");
+            e.printStackTrace();
 			return null;
 		}
 	}
