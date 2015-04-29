@@ -26,6 +26,7 @@ $info = explode("_", $_GET["Information"]);
 $user = $info[0];
 $password = $info[1];
 $event = $_GET["Event"];
+$time = $_GET["Time"];
 
 
 if (startsWith($user, "Sailor"))
@@ -92,7 +93,7 @@ if (startsWith($user, "Sailor"))
 	if ($row["password"] != $password)
 		die("NOT OK<br>Failed authentication");		// failed authentication
 		
-	$sql = 'INSERT INTO cords VALUES (\'' .$lat. '\',\''.$lon. '\',\''.$speed. '\',\''.$azi. '\',\''.$ber. '\',\''.$user. '\',\''.$event.'\',\'' . date('H:i:s', time()) . '\');';
+	$sql = 'INSERT INTO cords VALUES (\'' .$lat. '\',\''.$lon. '\',\''.$speed. '\',\''.$azi. '\',\''.$ber. '\',\''.$user. '\',\''.$event.'\',\'' . $time . '\');';
 	if ($DEBUG) echo $sql;
 	$result = mysql_query ($sql) or die(mysql_error());
 	if ($result)

@@ -44,10 +44,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SaveKmlTask.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SaveKmlTask.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/SaveKmlTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63053095" vertical-offset="1230" max-vertical-offset="4110">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1230" max-vertical-offset="4110">
               <caret line="123" column="83" selection-start-line="123" selection-start-column="83" selection-end-line="123" selection-end-column="83" />
               <folding>
                 <element signature="e#1227#1241#0" expanded="true" />
@@ -76,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SendDataHThread.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SendDataHThread.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/SendDataHThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="735" max-vertical-offset="1290">
-              <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.36504424" vertical-offset="240" max-vertical-offset="1290">
+              <caret line="39" column="221" selection-start-line="39" selection-start-column="217" selection-end-line="39" selection-end-column="221" />
               <folding />
             </state>
           </provider>
@@ -2164,21 +2164,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/SendDataHThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1005" max-vertical-offset="1830">
-          <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/SaveKmlTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63053095" vertical-offset="1230" max-vertical-offset="4110">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1230" max-vertical-offset="4110">
           <caret line="123" column="83" selection-start-line="123" selection-start-column="83" selection-end-line="123" selection-end-column="83" />
           <folding>
             <element signature="e#1227#1241#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/SendDataHThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36504424" vertical-offset="240" max-vertical-offset="1290">
+          <caret line="39" column="221" selection-start-line="39" selection-start-column="217" selection-end-line="39" selection-end-column="221" />
+          <folding />
         </state>
       </provider>
     </entry>
