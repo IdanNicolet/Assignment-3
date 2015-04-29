@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,11 +50,14 @@ public class GetSailorsTask extends AsyncTask<String, Integer, Map<String, LatLn
             String m = C.URL_HISTORY_TABLE + "&Event=" + event;
 			JSONObject json = JsonReader.readJsonFromUrl(m);
 			JSONArray jsonArray = json.getJSONArray("Positions");
+            StringTokenizer st = new StringTokenizer(fullUserName, "_");
+            String testName = (String) st.nextElement();
 			for (int i = 0; i < jsonArray.length(); i++)
             {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
+
 				String sailorFullName = jsonObj.getString("name");
-				if (sailorFullName.equals(name)) {
+				if (sailorFullName.equals(testName)) {
 					continue;
 				}
 				String lat = jsonObj.getString("lat");
