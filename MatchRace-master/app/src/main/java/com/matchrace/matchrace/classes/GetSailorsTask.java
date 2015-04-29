@@ -46,8 +46,9 @@ public class GetSailorsTask extends AsyncTask<String, Integer, Map<String, LatLn
 	protected Map<String, LatLng> doInBackground(String... urls) {
 		Map<String, LatLng> sailorsLatLng = new HashMap<String, LatLng>();
 		try {
-			JSONObject json = JsonReader.readJsonFromUrl(urls[0] + "&Event=" + event);
-			JSONArray jsonArray = json.getJSONArray("positions");
+            String m = C.URL_HISTORY_TABLE + "&Event=" + event;
+			JSONObject json = JsonReader.readJsonFromUrl(m);
+			JSONArray jsonArray = json.getJSONArray("Positions");
 			for (int i = 0; i < jsonArray.length(); i++)
             {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);

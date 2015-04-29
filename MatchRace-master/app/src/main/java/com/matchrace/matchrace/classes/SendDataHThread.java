@@ -37,25 +37,24 @@ public class SendDataHThread extends HandlerThread {
 	 */
 	private void httpConnSendData() {
 		try {
-			URL url = new URL(C.URL_INSERT_CLIENT + "&Latitude=" + lat +"&Longitude=" + lng +"&Pressure="+ speed + "&Azimuth="+ bearing + "&Bearing=" + bearing + "&Information=" + fullUserName + "&Event=" + event + "&Time=" + System.currentTimeMillis());
-			urlConnection = (HttpURLConnection) url.openConnection();
-			try {
-				InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-				BufferedReader br = new BufferedReader(new InputStreamReader(in));
-				String result = br.readLine();
-				if (!result.startsWith("OK")) { // Something is wrong.
-					Log.i(name, "Not OK!");
-				}
-				else { // Data sent.
-					Log.i(name, "OK!");
-				}
-			}
-			catch (IOException e) {
-				Log.i(name, "IOException");
-				urlConnection.disconnect();
-			}
-			urlConnection.disconnect();
-		}edURLException e) {
+            URL url = new URL(C.URL_INSERT_CLIENT + "&Latitude=" + lat + "&Longitude=" + lng + "&Pressure=" + speed + "&Azimuth=" + bearing + "&Bearing=" + bearing + "&Information=" + fullUserName + "&Event=" + event + "&Time=" + System.currentTimeMillis());
+            urlConnection = (HttpURLConnection) url.openConnection();
+            try {
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                String result = br.readLine();
+                if (!result.startsWith("OK")) { // Something is wrong.
+                    Log.i(name, "Not OK!");
+                } else { // Data sent.
+                    Log.i(name, "OK!");
+                }
+            } catch (IOException e) {
+                Log.i(name, "IOException");
+                urlConnection.disconnect();
+            }
+            urlConnection.disconnect();
+        }
+            catch (MalformedURLException e) {
 			Log.i(name, "MalformedURLException");
 		}
 		catch (IOException e) {
