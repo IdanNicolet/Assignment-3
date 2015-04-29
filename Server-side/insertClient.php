@@ -1,9 +1,11 @@
 <?php
+
+date_default_timezone_set('Asia/Jerusalem');
 $servername = "mysql11.000webhost.com";
 $username = "a8510183_root";
 $password = "Password1";
 $db = "a8510183_clients";
-$DEBUG = FALSE;
+$DEBUG = TRUE;
 
 if (!$link = mysql_connect($servername , $username , $password)) {
     echo 'Could not connect to mysql';
@@ -90,7 +92,7 @@ if (startsWith($user, "Sailor"))
 	if ($row["password"] != $password)
 		die("NOT OK<br>Failed authentication");		// failed authentication
 		
-	$sql = 'INSERT INTO cords VALUES (\'' .$lat. '\',\''.$lon. '\',\''.$speed. '\',\''.$azi. '\',\''.$ber. '\',\''.$user. '\',\''.$event.'\',\'' . date('h:i:s', time()) . '\');';
+	$sql = 'INSERT INTO cords VALUES (\'' .$lat. '\',\''.$lon. '\',\''.$speed. '\',\''.$azi. '\',\''.$ber. '\',\''.$user. '\',\''.$event.'\',\'' . date('H:i:s', time()) . '\');';
 	if ($DEBUG) echo $sql;
 	$result = mysql_query ($sql) or die(mysql_error());
 	if ($result)

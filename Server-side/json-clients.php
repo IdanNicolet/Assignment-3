@@ -86,7 +86,7 @@ if ($mode == "clients")
 		$row = mysql_fetch_assoc($result);
 		echo ("
 		{
-		\"time\":\"".  "1430313304441" ."\",
+		\"time\":\"".  $row["time"] ."\",
 		\"lat\":\"".$row["lat"]."\",
 		\"lon\":\"".$row["lon"]."\",
 		\"azimuth\":\"".$row["azi"]."\",
