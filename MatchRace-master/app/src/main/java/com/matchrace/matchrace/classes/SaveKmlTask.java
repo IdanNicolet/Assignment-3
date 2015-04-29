@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.StringTokenizer;
 import java.util.TreeMap;
 
 import org.json.JSONArray;
@@ -46,11 +47,16 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 	protected Map<Long, LatLng> doInBackground(String... urls) {
 		Map<Long, LatLng> sortedLatLngs = new TreeMap<Long, LatLng>();
 		try {
-			JSONObject jsonHistory = JsonReader.readJsonFromUrl(urls[0]);
-			JSONArray jsonArray = jsonHistory.getJSONArray("positions");
+            StringTokenizer st = new StringTokenizer(fullUserName,"_");
+            st.nextElement();
+            st.nextElement();
+            String event = (String) st.nextElement();
+            String m = urls[0]+"&Event="+event;
+			JSONObject jsonHistory = JsonReader.readJsonFromUrl(m);
+			JSONArray jsonArray = jsonHistory.getJSONArray("Positions");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
-				if (jsonObj.getString("info").equals(fullUserName)) {
+
 					String lat = jsonObj.getString("lat");
 					String lng = jsonObj.getString("lon");
 					if (Double.parseDouble(lat) == 0 || Double.parseDouble(lng) == 0) {
@@ -63,14 +69,14 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 					sortedLatLngs.put(Long.parseLong(time), latLng);
 
 					Log.i(fullUserName, "Lat: " + lat + ", Lng: " + lng);
-				}
+
 			}
 
 			JSONObject jsonClients = JsonReader.readJsonFromUrl(urls[1]);
-			jsonArray = jsonClients.getJSONArray("positions");
+			jsonArray = jsonClients.getJSONArray("Buoys");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
-				if (jsonObj.getString("info").equals(fullUserName)) {
+
 					String lat = jsonObj.getString("lat");
 					String lng = jsonObj.getString("lon");
 					if (Double.parseDouble(lat) == 0 || Double.parseDouble(lng) == 0) {
@@ -84,7 +90,7 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 
 					Log.i(fullUserName, "Lat: " + lat + ", Lng: " + lng);
 					break;
-				}
+
 			}
 
 			return sortedLatLngs;

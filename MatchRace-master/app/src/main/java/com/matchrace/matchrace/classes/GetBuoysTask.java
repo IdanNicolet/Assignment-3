@@ -47,7 +47,8 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 	protected Map<String, LatLng> doInBackground(String... urls) {
 		Map<String, LatLng> buoysLatLng = new HashMap<String, LatLng>();
 		try {
-			JSONObject json = JsonReader.readJsonFromUrl(C.URL_CLIENTS_TABLE + "Buoys&Event=" + event);
+            String m = C.URL_CLIENTS_TABLE + "Buoys&Event=" + event;
+			JSONObject json = JsonReader.readJsonFromUrl(m);
 			JSONArray jsonArray = json.getJSONArray("Buoys");
 			int countBouy = jsonArray.length();
 
@@ -86,10 +87,12 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 		}
 		catch (JSONException e) {
 			Log.i(name, "JSONException");
+            e.printStackTrace();
 			return null;
 		}
 		catch (IOException e) {
 			Log.i(name, "IOException");
+            e.printStackTrace();
 			return null;
 		}
 	}
