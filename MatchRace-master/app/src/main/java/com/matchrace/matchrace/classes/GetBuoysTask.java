@@ -47,10 +47,26 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 	protected Map<String, LatLng> doInBackground(String... urls) {
 		Map<String, LatLng> buoysLatLng = new HashMap<String, LatLng>();
 		try {
-			JSONObject json = JsonReader.readJsonFromUrl(urls[0]);
-			JSONArray jsonArray = json.getJSONArray("positions");
-			int countBouy = 0;
-			for (int i = 0; i < jsonArray.length() && countBouy < C.MAX_BUOYS; i++) {
+			JSONObject json = JsonReader.readJsonFromUrl(C.URL_CLIENTS_TABLE + "Buoys&Event=" + event);
+			JSONArray jsonArray = json.getJSONArray("Buoys");
+			int countBouy = jsonArray.length();
+
+            for (int i = 0; i < countBouy; i++) {
+                JSONObject jsonObj = (JSONObject) jsonArray.get(i);
+
+                String buoyName = "Buoy" + i;
+                String lat = jsonObj.getString("lat");
+                String lng = jsonObj.getString("lon");
+
+                // Adds buoy with LatLng to HashMap.
+                buoysLatLng.put(buoyName, new LatLng(Double.parseDouble(lat), Double.parseDouble(lng)));
+
+                Log.i(name + " " + buoyName + " " + event, "Lat: " + lat + ", Lng: " + lng);
+
+
+            }
+
+			/*for (int i = 0; i < jsonArray.length() && countBouy < C.MAX_BUOYS; i++) {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
 				if (jsonObj.getString("info").startsWith(C.BUOY_PREFIX)) {
 					if (jsonObj.getString("event").equals(event)) {
@@ -65,7 +81,7 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 						Log.i(name + " " + buoyName + " " + event, "Lat: " + lat + ", Lng: " + lng);
 					}
 				}
-			}
+			}*/
 			return buoysLatLng;
 		}
 		catch (JSONException e) {
@@ -81,7 +97,7 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 	protected void onPostExecute(Map<String, LatLng> buoysLatLng) {
 		if (buoysLatLng != null) {
 			// Random latitude and longitude.
-			LatLng latLng = new LatLng(32.056286, 34.824598);
+			LatLng latLng = new LatLng(32.1057, 35.1704);
 			int j = 0;
 			for (Map.Entry<String, LatLng> entry : buoysLatLng.entrySet()) {
 				if (j < buoyRadiuses.length) {

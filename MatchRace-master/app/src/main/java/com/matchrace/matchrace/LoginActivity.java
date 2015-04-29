@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.matchrace.matchrace.classes.C;
+import com.matchrace.matchrace.classes.GetBuoysTask;
 import com.matchrace.matchrace.classes.SendDataHThread;
 import com.matchrace.matchrace.modules.JsonReader;
 
