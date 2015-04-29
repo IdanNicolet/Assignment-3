@@ -53,7 +53,7 @@ public class GetSailorsTask extends AsyncTask<String, Integer, Map<String, LatLn
             {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
 				String sailorFullName = jsonObj.getString("name");
-				if (sailorFullName.equals((name))) {
+				if (sailorFullName.equals(name)) {
 					continue;
 				}
 				String lat = jsonObj.getString("lat");
