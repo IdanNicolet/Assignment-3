@@ -77,7 +77,7 @@ if ($mode == "clients")
 
 } else {
 
-	$sql = 'SELECT * FROM cords WHERE event ='.$event;
+	$sql = 'SELECT * FROM cords WHERE event ='.$event .' ORDER BY time DESC';
 	$result = mysql_query ($sql) or die(mysql_error());
 
 	echo "{\"Positions\":[";
@@ -96,59 +96,7 @@ if ($mode == "clients")
 		}");
 		if ($i != mysql_num_rows($result)-1) echo ",";
 	}
-	echo "]}";
-
-
-
-
-
-
-
-
-/*	
-	echo "{\"positions\":[<br>";
-	for ($i = 0; $i < mysql_num_rows($result)-1; $i++)
-	{
-		$row = mysql_fetch_assoc($result);
-		echo ("
-		{
-		\"ip\":\"11.11.11.11\",
-		\"time\":\"".$row["time"]."\",
-		\"lat\":\"".$row["lat"]."\",
-		\"lon\":\"".$row["lon"]."\",
-		\"alt\":\"-1\",
-		\"bearing\":\"".$row["bearing"]."\",
-		\"OrientX\":\"-1\",
-		\"OrientY\":\"-1\",
-		\"azimuth\":\"".$row["azi"]."\",
-		\"pressure\":\"-1\",
-		\"info\":\"".$row["name"]."\",
-		\"event\":\"".$row["event"]."\"
-		},	
-		<br>");
-	}
-	
-	
-	$row = mysql_fetch_assoc($result);
-	echo ("
-		{
-		\"ip\":\"11.11.11.11\",
-		\"time\":\"".$row["time"]."\",
-		\"lat\":\"".$row["lat"]."\",
-		\"lon\":\"".$row["lon"]."\",
-		\"alt\":\"-1\",
-		\"bearing\":\"".$row["bearing"]."\",
-		\"OrientX\":\"-1\",
-		\"OrientY\":\"-1\",
-		\"azimuth\":\"".$row["azi"]."\",
-		\"pressure\":\"-1\",
-		\"info\":\"".$row["name"]."\",
-		\"event\":\"".$row["event"]."\"
-		}	
-		<br>");
-	echo "]}";
-	*/
-	
+	echo "]}";	
 
 }
 
