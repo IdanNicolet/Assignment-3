@@ -26,7 +26,7 @@ $user = $info[0];
 $password = $info[1];
 $event = $_GET["Event"];
 
-if ($mode == clients)
+if ($mode == "clients")
 // login
 {
 	$user = str_replace ("Cord", "", $user);
@@ -37,6 +37,42 @@ if ($mode == clients)
 	$row = mysql_fetch_assoc($result);
 	if ($row && $row["password"] == $password)
 		echo "{\"positions\":[{\"event\":\"".$row["event"]."\"}]}";
+
+} else if ($mode == "clientsBuoys") {
+	$sql = 'SELECT * FROM events WHERE event=\''.$event.'\'';
+	$result = mysql_query ($sql) or die(mysql_error());
+	$row = mysql_fetch_assoc($result);
+	if (!$row)
+		die("ERROR no such Event");
+	else
+	{
+		echo "{\"Buoys\":[<br>";
+
+		for ($i = 1; $i <= 10; $i++)
+		{
+			$lati = "lat".$i;
+			$loni = "lon".$i;
+
+			if ($row[!$lati]) break;
+			echo ("
+			{
+			\"lat\":\"".    $row[$lati]    ."\", \"lon\":\"".    $row[$loni]    ."\"}");
+
+			if ($i < 10 && $row["lat".($i+1)])
+				echo ",<br>";
+		}
+		
+		echo "<br>]}";
+	
+	}
+
+	if ($DEBUG)
+	{
+		echo "<br>";
+		print_r($array);
+		echo $sql;
+	}
+
 
 } else {
 
@@ -89,4 +125,4 @@ if ($mode == clients)
 
 }
 
-?>
+?>				

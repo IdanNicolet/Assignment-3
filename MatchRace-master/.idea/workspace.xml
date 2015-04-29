@@ -42,9 +42,28 @@
       <file leaf-file-name="LoginActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5160">
-              <caret line="191" column="28" selection-start-line="191" selection-start-column="28" selection-end-line="191" selection-end-column="28" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="5190">
+              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+              <folding>
+                <element signature="e#3300#3563#0" expanded="true" />
+                <element signature="e#3558#3559#0" expanded="true" />
+                <element signature="e#3844#3951#0" expanded="true" />
+                <element signature="e#3946#3947#0" expanded="true" />
+                <element signature="e#4022#4157#0" expanded="true" />
+                <element signature="e#4152#4153#0" expanded="true" />
+                <element signature="e#5121#5161#0" expanded="true" />
+                <element signature="e#5263#5305#0" expanded="true" />
+                <element signature="e#5436#5476#0" expanded="true" />
+                <element signature="e#5575#5613#0" expanded="true" />
+                <element signature="e#5747#5787#0" expanded="true" />
+                <element signature="e#6128#6162#0" expanded="true" />
+                <element signature="e#6901#7085#0" expanded="true" />
+                <element signature="e#7079#7080#0" expanded="true" />
+                <element signature="e#7225#7407#0" expanded="true" />
+                <element signature="e#7401#7402#0" expanded="true" />
+                <element signature="e#10331#10377#0" expanded="true" />
+                <element signature="e#10401#10447#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,8 +71,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="3135">
-              <caret line="75" column="50" selection-start-line="75" selection-start-column="50" selection-end-line="75" selection-end-column="50" />
+            <state vertical-scroll-proportion="-6.230769" vertical-offset="1038" max-vertical-offset="2670">
+              <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -72,17 +91,17 @@
       <file leaf-file-name="C.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/C.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1035">
-              <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="313" max-vertical-offset="1035">
+              <caret line="35" column="109" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="109" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AdminActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/AdminActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.058139537" vertical-offset="0" max-vertical-offset="3615">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3115" max-vertical-offset="3615">
               <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
@@ -99,11 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetBuoysTask.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GetBuoysTask.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/GetBuoysTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1755">
-              <caret line="85" column="71" selection-start-line="85" selection-start-column="68" selection-end-line="85" selection-end-column="71" />
+            <state vertical-scroll-proportion="0.32119915" vertical-offset="330" max-vertical-offset="1440">
+              <caret line="53" column="51" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -112,7 +131,7 @@
       <file leaf-file-name="GetSailorsTask.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/GetSailorsTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1395" max-vertical-offset="1635">
+            <state vertical-scroll-proportion="0.0" vertical-offset="598" max-vertical-offset="1350">
               <caret line="93" column="74" selection-start-line="93" selection-start-column="71" selection-end-line="93" selection-end-column="74" />
               <folding />
             </state>
@@ -146,6 +165,38 @@
       <list>
         <ExternalTaskExecutionInfo>
           <option name="executorId" value="Run" />
+          <option name="settings">
+            <ExternalSystemSettings>
+              <option name="externalProjectPath" value="$PROJECT_DIR$" />
+              <option name="externalSystemIdString" value="GRADLE" />
+              <option name="scriptParameters" value="" />
+              <option name="taskNames">
+                <list>
+                  <option value="Assemble" />
+                </list>
+              </option>
+              <option name="vmOptions" value="" />
+            </ExternalSystemSettings>
+          </option>
+        </ExternalTaskExecutionInfo>
+        <ExternalTaskExecutionInfo>
+          <option name="executorId" value="Run" />
+          <option name="settings">
+            <ExternalSystemSettings>
+              <option name="externalProjectPath" value="$PROJECT_DIR$" />
+              <option name="externalSystemIdString" value="GRADLE" />
+              <option name="scriptParameters" value="" />
+              <option name="taskNames">
+                <list>
+                  <option value="assemble" />
+                </list>
+              </option>
+              <option name="vmOptions" value="" />
+            </ExternalSystemSettings>
+          </option>
+        </ExternalTaskExecutionInfo>
+        <ExternalTaskExecutionInfo>
+          <option name="executorId" value="Debug" />
           <option name="settings">
             <ExternalSystemSettings>
               <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -1371,19 +1422,20 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/GetSailorsTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/SaveKmlTask.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/GetBuoysTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/SendDataHThread.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/C.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/AdminActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/GetBuoysTask.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -1464,6 +1516,28 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MatchRace-master" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="matchrace" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -1479,7 +1553,9 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="FullScreen" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="emulator-5554" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_21_x86" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1487,7 +1563,7 @@
       <recent name="$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.race">
+  <component name="RunManager" selected="Android Application.app">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -1650,6 +1726,8 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
+      <RunnerSettings RunnerId="ExternalSystemTaskRunner" />
+      <ConfigurationWrapper RunnerId="ExternalSystemTaskRunner" />
       <method />
     </configuration>
     <configuration default="false" name="race" type="GradleRunConfiguration" factoryName="Gradle">
@@ -1667,7 +1745,13 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
+      <RunnerSettings RunnerId="ExternalSystemTaskDebugRunner">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="ExternalSystemTaskRunner" />
+      <ConfigurationWrapper RunnerId="ExternalSystemTaskDebugRunner" />
       <ConfigurationWrapper RunnerId="ExternalSystemTaskRunner" />
       <method />
     </configuration>
@@ -1706,35 +1790,35 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.308933" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3989432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32893" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32893" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35622317" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35622317" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35006604" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1828,7 +1912,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5525" max-vertical-offset="6392">
           <caret line="325" column="48" selection-start-line="325" selection-start-column="43" selection-end-line="325" selection-end-column="48" />
-          <folding />
+          <folding>
+            <element signature="e#3300#3563#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+            <element signature="e#3844#3951#0" expanded="true" />
+            <element signature="e#3946#3947#0" expanded="true" />
+            <element signature="e#4022#4157#0" expanded="true" />
+            <element signature="e#4152#4153#0" expanded="true" />
+            <element signature="e#5121#5161#0" expanded="true" />
+            <element signature="e#5263#5305#0" expanded="true" />
+            <element signature="e#5436#5476#0" expanded="true" />
+            <element signature="e#5575#5613#0" expanded="true" />
+            <element signature="e#5747#5787#0" expanded="true" />
+            <element signature="e#6128#6162#0" expanded="true" />
+            <element signature="e#6901#7085#0" expanded="true" />
+            <element signature="e#7079#7080#0" expanded="true" />
+            <element signature="e#7225#7407#0" expanded="true" />
+            <element signature="e#7401#7402#0" expanded="true" />
+            <element signature="e#10331#10377#0" expanded="true" />
+            <element signature="e#10401#10447#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1899,7 +2002,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5049" max-vertical-offset="6018">
           <caret line="330" column="43" selection-start-line="330" selection-start-column="43" selection-end-line="330" selection-end-column="43" />
-          <folding />
+          <folding>
+            <element signature="e#3300#3563#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+            <element signature="e#3844#3951#0" expanded="true" />
+            <element signature="e#3946#3947#0" expanded="true" />
+            <element signature="e#4022#4157#0" expanded="true" />
+            <element signature="e#4152#4153#0" expanded="true" />
+            <element signature="e#5121#5161#0" expanded="true" />
+            <element signature="e#5263#5305#0" expanded="true" />
+            <element signature="e#5436#5476#0" expanded="true" />
+            <element signature="e#5575#5613#0" expanded="true" />
+            <element signature="e#5747#5787#0" expanded="true" />
+            <element signature="e#6128#6162#0" expanded="true" />
+            <element signature="e#6901#7085#0" expanded="true" />
+            <element signature="e#7079#7080#0" expanded="true" />
+            <element signature="e#7225#7407#0" expanded="true" />
+            <element signature="e#7401#7402#0" expanded="true" />
+            <element signature="e#10331#10377#0" expanded="true" />
+            <element signature="e#10401#10447#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1955,7 +2077,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4930" max-vertical-offset="6358">
           <caret line="292" column="36" selection-start-line="292" selection-start-column="36" selection-end-line="292" selection-end-column="36" />
-          <folding />
+          <folding>
+            <element signature="e#3300#3563#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+            <element signature="e#3844#3951#0" expanded="true" />
+            <element signature="e#3946#3947#0" expanded="true" />
+            <element signature="e#4022#4157#0" expanded="true" />
+            <element signature="e#4152#4153#0" expanded="true" />
+            <element signature="e#5121#5161#0" expanded="true" />
+            <element signature="e#5263#5305#0" expanded="true" />
+            <element signature="e#5436#5476#0" expanded="true" />
+            <element signature="e#5575#5613#0" expanded="true" />
+            <element signature="e#5747#5787#0" expanded="true" />
+            <element signature="e#6128#6162#0" expanded="true" />
+            <element signature="e#6901#7085#0" expanded="true" />
+            <element signature="e#7079#7080#0" expanded="true" />
+            <element signature="e#7225#7407#0" expanded="true" />
+            <element signature="e#7401#7402#0" expanded="true" />
+            <element signature="e#10331#10377#0" expanded="true" />
+            <element signature="e#10401#10447#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2097,26 +2238,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="3135">
-          <caret line="75" column="50" selection-start-line="75" selection-start-column="50" selection-end-line="75" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/MenuActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1830">
           <caret line="31" column="10" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/C.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="461" max-vertical-offset="1173">
-          <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -2129,11 +2254,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/GetBuoysTask.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/SaveKmlTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1755">
-          <caret line="85" column="71" selection-start-line="85" selection-start-column="68" selection-end-line="85" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2925" max-vertical-offset="4245">
+          <caret line="195" column="79" selection-start-line="195" selection-start-column="76" selection-end-line="195" selection-end-column="79" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/AdminActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3115" max-vertical-offset="3615">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="5190">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding>
+            <element signature="e#3300#3563#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+            <element signature="e#3844#3951#0" expanded="true" />
+            <element signature="e#3946#3947#0" expanded="true" />
+            <element signature="e#4022#4157#0" expanded="true" />
+            <element signature="e#4152#4153#0" expanded="true" />
+            <element signature="e#5121#5161#0" expanded="true" />
+            <element signature="e#5263#5305#0" expanded="true" />
+            <element signature="e#5436#5476#0" expanded="true" />
+            <element signature="e#5575#5613#0" expanded="true" />
+            <element signature="e#5747#5787#0" expanded="true" />
+            <element signature="e#6128#6162#0" expanded="true" />
+            <element signature="e#6901#7085#0" expanded="true" />
+            <element signature="e#7079#7080#0" expanded="true" />
+            <element signature="e#7225#7407#0" expanded="true" />
+            <element signature="e#7401#7402#0" expanded="true" />
+            <element signature="e#10331#10377#0" expanded="true" />
+            <element signature="e#10401#10447#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2145,26 +2305,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/SaveKmlTask.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/C.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2925" max-vertical-offset="4245">
-          <caret line="195" column="79" selection-start-line="195" selection-start-column="76" selection-end-line="195" selection-end-column="79" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="313" max-vertical-offset="1035">
+          <caret line="35" column="109" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="109" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/LoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5160">
-          <caret line="191" column="28" selection-start-line="191" selection-start-column="28" selection-end-line="191" selection-end-column="28" />
+        <state vertical-scroll-proportion="-6.230769" vertical-offset="1038" max-vertical-offset="2670">
+          <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/AdminActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/matchrace/matchrace/classes/GetBuoysTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.058139537" vertical-offset="0" max-vertical-offset="3615">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.32119915" vertical-offset="330" max-vertical-offset="1440">
+          <caret line="53" column="51" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
           <folding />
         </state>
       </provider>

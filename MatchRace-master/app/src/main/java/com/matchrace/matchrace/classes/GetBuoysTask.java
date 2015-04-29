@@ -47,8 +47,8 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 	protected Map<String, LatLng> doInBackground(String... urls) {
 		Map<String, LatLng> buoysLatLng = new HashMap<String, LatLng>();
 		try {
-			JSONObject json = JsonReader.readJsonFromUrl(urls[0]);
-			JSONArray jsonArray = json.getJSONArray("positions");
+			JSONObject json = JsonReader.readJsonFromUrl(urls[0] + "Buoy&event=" + event);
+			JSONArray jsonArray = json.getJSONArray("Buoys");
 			int countBouy = 0;
 			for (int i = 0; i < jsonArray.length() && countBouy < C.MAX_BUOYS; i++) {
 				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
