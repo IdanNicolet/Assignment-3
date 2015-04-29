@@ -46,9 +46,6 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 	@Override
 	protected Map<Long, LatLng> doInBackground(String... urls) {
 		Map<Long, LatLng> sortedLatLngs = new TreeMap<Long, LatLng>();
-
-
-
 		try {
             StringTokenizer st = new StringTokenizer(fullUserName,"_");
             st.nextElement();
@@ -93,7 +90,7 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 					// Adds sailor's last data to TreeMap.
 					sortedLatLngs.put(Long.parseLong(time), latLng);
 
-				//	Log.i(fullUserName, "Lat: " + lat + ", Lng: " + lng);
+					Log.i(fullUserName, "Lat: " + lat + ", Lng: " + lng);
 					break;
 
 			}
