@@ -27,7 +27,7 @@ $password = $info[1];
 $event = $_GET["Event"];
 
 if ($mode == "clients")
-// login
+// login activity
 {
 	$user = str_replace ("Cord", "", $user);
 	$user = str_replace ("Sailor", "", $user);
@@ -39,6 +39,7 @@ if ($mode == "clients")
 		echo "{\"positions\":[{\"event\":\"".$row["event"]."\"}]}";
 
 } else if ($mode == "clientsBuoys") {
+// Returnes all buoys
 	$sql = 'SELECT * FROM events WHERE event=\''.$event.'\'';
 	$result = mysql_query ($sql) or die(mysql_error());
 	$row = mysql_fetch_assoc($result);
@@ -74,9 +75,41 @@ if ($mode == "clients")
 		echo $sql;
 	}
 
+} else if ($mode == "historyRace") {
+// return all cords
+	$sql = 
+	'SELECT * 
+	FROM cords 
+	WHERE event ='.  $event  .' AND name != \''. $user .'\' 
+	AND time = 
+		(SELECT MAX(TIME) 
+		FROM cords
+		WHERE event =' . $event . '
+		AND name !=  \''. $user .'\'
+		GROUP BY name)';
+
+	$result = mysql_query ($sql) or die(mysql_error());
+
+	echo "{\"Positions\":[";
+	//for ($i = 0; $i < mysql_num_rows($result); $i++)
+	//{
+		$row = mysql_fetch_assoc($result);
+		echo ("
+		{
+		\"time\":\"".  $row["time"] ."\",
+		\"lat\":\"".$row["lat"]."\",
+		\"lon\":\"".$row["lon"]."\",
+		\"azimuth\":\"".$row["azi"]."\",
+		\"speed\":\"".$row["speed"]."\",
+		\"name\":\"".$row["name"]."\",
+		\"event\":\"".$row["event"]."\"
+		}");
+	//	if ($i != mysql_num_rows($result)-1) echo ",";
+	//}
+	echo "]}";	
 
 } else {
-
+// return all cords
 	$sql = 'SELECT * FROM cords WHERE event ='.$event .' ORDER BY time DESC';
 	$result = mysql_query ($sql) or die(mysql_error());
 
