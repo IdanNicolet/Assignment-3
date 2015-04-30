@@ -112,7 +112,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		getBuoys.execute(C.URL_CLIENTS_TABLE);
 
 		// AsyncTask for getting the sailor's locations from DB and adding them to the google map.
-		GetSailorsTask getSailors = new GetSailorsTask("GetSailorsTask", googleMap, sailorMarkers, fullUserName, event);
+		GetSailorsTask getSailors = new GetSailorsTask("GetSailorsTask", googleMap, sailorMarkers, user, event);
 		getSailors.execute(C.URL_CLIENTS_TABLE);
 	}
 
@@ -147,7 +147,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			thread.start();
 
 			// AsyncTask for getting the sailor's locations from DB and adding them to the google map.
-			GetSailorsTask getSailors = new GetSailorsTask("GetSailorsTask", googleMap, sailorMarkers, fullUserName, event);
+			GetSailorsTask getSailors = new GetSailorsTask("GetSailorsTask", googleMap, sailorMarkers, user, event);
 			getSailors.execute(C.URL_CLIENTS_TABLE);
 
 			// Updates TextViews in layout.
