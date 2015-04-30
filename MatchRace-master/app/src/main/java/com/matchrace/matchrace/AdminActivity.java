@@ -2,7 +2,9 @@ package com.matchrace.matchrace;
 
 import java.text.DecimalFormat;
 
+import com.google.android.gms.maps.model.Circle;
 import com.matchrace.matchrace.classes.C;
+import com.matchrace.matchrace.classes.GetBuoysTask;
 import com.matchrace.matchrace.classes.SendDataHThread;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -46,6 +48,8 @@ public class AdminActivity extends FragmentActivity implements LocationListener,
 	private GoogleMap googleMap;
 	private TextView tvLat, tvLng, tvUser, tvSpeed, tvDirection, tvEvent;
 	private Button bBuoy1, bBuoy2, bBuoy3, bBuoy4, bBuoy5, bBuoy6, bBuoy7, bBuoy8, bBuoy9, bBuoy10;
+    private Circle[] buoyRadiuses = new Circle[C.MAX_BUOYS];
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +101,9 @@ public class AdminActivity extends FragmentActivity implements LocationListener,
 		tvUser.setText(user.substring(6));
 		tvEvent.setText(event);
 
-		bBuoy1 = (Button) findViewById(R.id.bBuoy1);
+        RefreshBuoys();
+
+        bBuoy1 = (Button) findViewById(R.id.bBuoy1);
 		bBuoy2 = (Button) findViewById(R.id.bBuoy2);
 		bBuoy3 = (Button) findViewById(R.id.bBuoy3);
 		bBuoy4 = (Button) findViewById(R.id.bBuoy4);
@@ -235,6 +241,7 @@ public class AdminActivity extends FragmentActivity implements LocationListener,
 			bBuoy10.setEnabled(false);
 			break;
 		}
+        RefreshBuoys();
 
 		// HandlerThread for sending the buoy location to the DB through thread.
 		SendDataHThread thread = new SendDataHThread("SendBuoys");
@@ -258,5 +265,13 @@ public class AdminActivity extends FragmentActivity implements LocationListener,
 		LatLng latLng = new LatLng(Double.parseDouble(lat), Double.parseDouble(lng));
 		googleMap.addMarker(new MarkerOptions().position(latLng).title(fullBuoyName.split("_")[0]).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_buoy_low)));
 	}
+
+
+    private void RefreshBuoys()
+    {
+        // AsyncTask for getting the buoy's locations from DB and adding them to the google map.
+        GetBuoysTask getBuoys = new GetBuoysTask("GetBuoysTask", googleMap, buoyRadiuses, event);
+        getBuoys.execute(C.URL_CLIENTS_TABLE);
+    }
 
 }

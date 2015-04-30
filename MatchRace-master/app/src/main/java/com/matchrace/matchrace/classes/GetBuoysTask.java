@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.Marker;
 import com.matchrace.matchrace.R;
 import com.matchrace.matchrace.modules.JsonReader;
 import com.google.android.gms.maps.CameraUpdate;
@@ -55,7 +56,7 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
             for (int i = 0; i < countBouy; i++) {
                 JSONObject jsonObj = (JSONObject) jsonArray.get(i);
 
-                String buoyName = "Buoy" + i;
+                String buoyName = "BuoyNum" + (i + 1);
                 String lat = jsonObj.getString("lat");
                 String lng = jsonObj.getString("lon");
 
@@ -66,23 +67,6 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 
 
             }
-
-			/*for (int i = 0; i < jsonArray.length() && countBouy < C.MAX_BUOYS; i++) {
-				JSONObject jsonObj = (JSONObject) jsonArray.get(i);
-				if (jsonObj.getString("info").startsWith(C.BUOY_PREFIX)) {
-					if (jsonObj.getString("event").equals(event)) {
-						countBouy++;
-						String buoyName = jsonObj.getString("info").split("_")[0];
-						String lat = jsonObj.getString("lat");
-						String lng = jsonObj.getString("lon");
-
-						// Adds buoy with LatLng to HashMap.
-						buoysLatLng.put(buoyName, new LatLng(Double.parseDouble(lat), Double.parseDouble(lng)));
-
-						Log.i(name + " " + buoyName + " " + event, "Lat: " + lat + ", Lng: " + lng);
-					}
-				}
-			}*/
 			return buoysLatLng;
 		}
 		catch (JSONException e) {
@@ -99,7 +83,7 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 
 	protected void onPostExecute(Map<String, LatLng> buoysLatLng) {
 		if (buoysLatLng != null) {
-			// Random latitude and longitude.
+            // Random latitude and longitude.
 			LatLng latLng = new LatLng(32.1057, 35.1704);
 			int j = 0;
 			for (Map.Entry<String, LatLng> entry : buoysLatLng.entrySet()) {
@@ -107,7 +91,7 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 					String buoyName = entry.getKey();
 					LatLng buoyLatLng = entry.getValue();
 
-					// Adds a buoy on the google map.
+                    // Adds a buoy on the google map.
 					latLng = new LatLng(buoyLatLng.latitude, buoyLatLng.longitude);
 					googleMap.addMarker(new MarkerOptions().position(latLng).title(buoyName).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_buoy_low)));
 
@@ -120,6 +104,11 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 					.fillColor(Color.argb(50, 0, 0, 255)));
 				}
 			}
+
+
+
+
+
 
 			// Focus the camera on the latest buoy added to HashMap.
 			CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, C.ZOOM_LEVEL);

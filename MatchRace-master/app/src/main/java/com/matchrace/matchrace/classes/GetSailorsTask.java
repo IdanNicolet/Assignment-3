@@ -50,26 +50,13 @@ public class GetSailorsTask extends AsyncTask<String, Integer, Map<String, LatLn
             String m = C.URL_HISTORY_TABLE +"Race&Event=" + event+"&Information="+fullUserName;
 			JSONObject json = JsonReader.readJsonFromUrl(m);
 			JSONArray jsonArray = json.getJSONArray("Positions");
-
-
-//			for (int i = 0; i < jsonArray.length(); i++)
-//            {
-				JSONObject jsonObj = (JSONObject) jsonArray.get(0);
-//
-				String sailorFullName = jsonObj.getString("name");
-//				if (testName.equals(sailorFullName)) {
-//					continue;
-//				}
-				String lat = jsonObj.getString("lat");
-				String lng = jsonObj.getString("lon");
-//				if (Double.parseDouble(lat) == 0 || Double.parseDouble(lng) == 0) {
-//					continue;
-//				}
-				String sailorName = sailorFullName;
-				sailorsLatLng.put(sailorName, new LatLng(Double.parseDouble(lat), Double.parseDouble(lng)));
-
-				Log.i(name + " " + sailorName + " " + event, "Lat: " + lat + ", Lng: " + lng);
-		//	}
+	    	JSONObject jsonObj = (JSONObject) jsonArray.get(0);
+			String sailorFullName = jsonObj.getString("name");
+			String lat = jsonObj.getString("lat");
+			String lng = jsonObj.getString("lon");
+			String sailorName = sailorFullName;
+            sailorsLatLng.put(sailorName, new LatLng(Double.parseDouble(lat), Double.parseDouble(lng)));
+			Log.i(name + " " + sailorName + " " + event, "Lat: " + lat + ", Lng: " + lng);
 			return sailorsLatLng;
 		}
 		catch (JSONException e) {
