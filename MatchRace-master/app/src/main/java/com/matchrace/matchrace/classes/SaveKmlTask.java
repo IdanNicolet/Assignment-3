@@ -126,6 +126,9 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 				kmlBuilder.append("\t\t<IconStyle>\n\t\t\t<Icon>\n\t\t\t\t<href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href>\n");
 				kmlBuilder.append("\t\t\t</Icon>\n\t\t</IconStyle>\n\t</Style>\n\t<Style id=\"style3\">\n\t\t<IconStyle>\n");
 				kmlBuilder.append("\t\t\t<Icon>\n\t\t\t\t<href>http://maps.google.com/mapfiles/kml/paddle/red-stars.png</href>\n\t\t\t</Icon>\n\t\t</IconStyle>\n\t</Style>\n");
+                kmlBuilder.append("\t<Style id=\"style4\">\n\t\t<IconStyle>\n");
+                kmlBuilder.append("\t\t\t<Icon>\n\t\t\t\t<href>http://maps.google.com/mapfiles/kml/shapes/flag.png</href>\n\t\t\t</Icon>\n\t\t</IconStyle>\n\t</Style>\n");
+
 
 				// Starting time stamp.
 				kmlBuilder.append("\t<Placemark>\n\t\t<name>FROM</name>\n\t\t<TimeStamp>\n");
@@ -151,7 +154,7 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
                     if(time <= 100)
                     {
                         kmlBuilder.append("\t\t\t<when>" + String.valueOf(time) + "</when>\n\t\t</TimeStamp>\n");
-                        kmlBuilder.append("\t\t<styleUrl>#style1</styleUrl>\n\t\t<Point>\n\t\t\t<coordinates>");
+                        kmlBuilder.append("\t\t<styleUrl>#style4</styleUrl>\n\t\t<Point>\n\t\t\t<coordinates>");
                     }
                     else {
                         kmlBuilder.append("\t\t\t<when>" + String.valueOf(time) + "</when>\n\t\t</TimeStamp>\n");
