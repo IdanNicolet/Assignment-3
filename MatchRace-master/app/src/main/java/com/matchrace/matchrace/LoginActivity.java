@@ -1,6 +1,11 @@
 package com.matchrace.matchrace;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.charset.Charset;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -279,30 +284,24 @@ public class LoginActivity extends Activity {
 				return mPassword.equals("admin") || mPassword.equals("Admin");
 			}
 
-			if (registerRequest) {
-				return true;
-			}
+//			if (reg	isterRequest) {
+//				return true;
+//			}
 
 			String name = "UserLoginTask";
-			try {
-				// Gets the user data from DB and checks if the user's data match.
-                JSONObject json = JsonReader.readJsonFromUrl(C.URL_CLIENTS_TABLE + "&Information=" + mUser + "_" + mPassword + "_" + mEvent);
-				JSONArray jsonArray = json.getJSONArray("positions");
-				if (jsonArray.length() > 0) {
-					JSONObject jsonObj = (JSONObject) jsonArray.get(0);
-					if (jsonObj.getString("event").equals(mEvent))
-						return true;
-				}
-			}
-			catch (JSONException e) {
-				Log.i(name, "JSONException");
-				return false;
-			}
-			catch (IOException e) {
-				Log.i(name, "IOException, Ensure Mobile Data is NOT off");
-				return false;
-			}
 
+				// Gets the user data from DB and checks if the user's data match.
+				String url = C.URL_CLIENTS_TABLE + "&Information=" + mUser + "_" + mPassword + "_" + mEvent;
+
+			try {
+				InputStream is = new URL(url).openStream();
+				BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+				String in = rd.readLine();
+				is.close();
+				return in.startsWith("OK");
+			}
+			catch (Exception e)
+			{e.printStackTrace(); }
 			return false;
 		}
 

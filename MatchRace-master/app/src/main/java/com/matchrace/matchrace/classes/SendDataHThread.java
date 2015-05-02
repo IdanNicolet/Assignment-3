@@ -21,10 +21,12 @@ public class SendDataHThread extends HandlerThread {
 	private HttpURLConnection urlConnection;
 	private String lat, lng, speed, bearing, event;
 	private String name, fullUserName;
+	private boolean sendSuccessfull;
 
 	public SendDataHThread(String name) {
 		super(name);
 		this.name = name;
+		sendSuccessfull = false;
 	}
 
 	@Override
@@ -36,29 +38,35 @@ public class SendDataHThread extends HandlerThread {
 	 * Creates the HTTP connection for sending data to DB.
 	 */
 	private void httpConnSendData() {
-		try {
-            URL url = new URL(C.URL_INSERT_CLIENT + "&Latitude=" + lat + "&Longitude=" + lng + "&Pressure=" + speed + "&Azimuth=" + bearing + "&Bearing=" + bearing + "&Information=" + fullUserName + "&Event=" + event + "&Time=" + System.currentTimeMillis());
-            urlConnection = (HttpURLConnection) url.openConnection();
-            try {
-                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                BufferedReader br = new BufferedReader(new InputStreamReader(in));
-                String result = br.readLine();
-                if (!result.startsWith("OK")) { // Something is wrong.
-                    Log.i(name, "Not OK!");
-                } else { // Data sent.
-                    Log.i(name, "OK!");
-                }
-            } catch (IOException e) {
-                Log.i(name, "IOException");
-                urlConnection.disconnect();
-            }
-            urlConnection.disconnect();
-        }
-            catch (MalformedURLException e) {
-			Log.i(name, "MalformedURLException");
-		}
-		catch (IOException e) {
-			Log.i(name, "IOException");
+		while (!sendSuccessfull)
+		{
+			try {
+				URL url = new URL(C.URL_INSERT_CLIENT + "&Latitude=" + lat + "&Longitude=" + lng + "&Pressure=" + speed + "&Azimuth=" + bearing + "&Bearing=" + bearing + "&Information=" + fullUserName + "&Event=" + event + "&Time=" + System.currentTimeMillis());
+				urlConnection = (HttpURLConnection) url.openConnection();
+				try {
+					InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+					BufferedReader br = new BufferedReader(new InputStreamReader(in));
+					String result = br.readLine();
+					if (!result.startsWith("OK")) { // Something is wrong.
+						Log.i(name, "Not OK!");
+					} else { // Data sent.
+						Log.i(name, "OK!");
+						sendSuccessfull = true;
+					}
+				} catch (IOException e) {
+					Log.i(name, "IOException");
+				}
+				finally
+				{
+					urlConnection.disconnect();
+				}
+			}
+			catch (MalformedURLException e) {
+				Log.i(name, "MalformedURLException");
+			}
+			catch (IOException e) {
+				Log.i(name, "IOException");
+			}
 		}
 	}
 
