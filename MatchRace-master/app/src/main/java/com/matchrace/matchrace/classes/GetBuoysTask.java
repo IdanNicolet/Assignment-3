@@ -64,8 +64,6 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
                 buoysLatLng.put(buoyName, new LatLng(Double.parseDouble(lat), Double.parseDouble(lng)));
 
                 Log.i(name + " " + buoyName + " " + event, "Lat: " + lat + ", Lng: " + lng);
-
-
             }
 			return buoysLatLng;
 		}

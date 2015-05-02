@@ -23,6 +23,10 @@ public class C {
 
     public static final String SAILOR_PREFIX = "Sailor";
 	public static final String BUOY_PREFIX = "BuoyNum";
+//    public static final String SAILOR_PREFIX = "";
+//    public static final String BUOY_PREFIX = "";
+
+
 
 	// Login constants.
 	public static final String USER_NAME = "user_name";
