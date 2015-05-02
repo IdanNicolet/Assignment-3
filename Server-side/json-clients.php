@@ -26,13 +26,15 @@ $user = $info[0];
 $password = $info[1];
 $event = $_GET["Event"];
 
-if ($mode == "clients")
-// login activity
-{
 	$user = str_replace ("Cord", "", $user);
 	$user = str_replace ("Sailor", "", $user);
 
-	$sql = 'SELECT * FROM clients WHERE name=\''.$user.'\'';
+
+if ($mode == "clients")
+// login activity
+{
+	$sql = 'SELECT * FROM clients WHERE name=\''.$user.'\' AND event= '.$info[2];
+	//echo "<br>".$sql."<br>";
 	$result = mysql_query ($sql) or die(mysql_error());
 	$row = mysql_fetch_assoc($result);
 	if ($row && $row["password"] == $password)
@@ -111,14 +113,14 @@ if ($mode == "clients")
 
 } else if ($mode == "clientsUserCheck") {
 	
+
 		$sql = 'SELECT * FROM clients WHERE name =\'' .$user .'\' AND event = '. $info[2];
 		//echo $sql."<br>";
 		$result = mysql_query ($sql) or die(mysql_error());
 		if (mysql_num_rows($result) == 0)
-			echo "NotOK!";
+			echo "OK";
 		else
-			echo "OK!";
-
+			echo "NotOK";
 
 } else {
 // return all cords
@@ -145,4 +147,4 @@ if ($mode == "clients")
 
 }
 
-?>						
+?>								

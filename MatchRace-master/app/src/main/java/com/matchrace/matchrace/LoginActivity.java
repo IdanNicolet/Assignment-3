@@ -284,9 +284,38 @@ public class LoginActivity extends Activity {
 				return mPassword.equals("admin") || mPassword.equals("Admin");
 			}
 
-//			if (reg	isterRequest) {
-//				return true;
-//			}
+			if (registerRequest) {
+
+				String url = C.URL_CLIENTS_TABLE + "UserCheck" + "&Information=" + mUser + "_" + mPassword + "_" + mEvent;
+				try {
+					InputStream is = new URL(url).openStream();
+					BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+					String in = rd.readLine();
+					is.close();
+					if(in.startsWith("NotOK"))
+					{
+						//etUser.setError("User already regitered");
+						return false;
+					}
+				}
+				catch (Exception e)
+				{e.printStackTrace(); }
+
+
+				// HandlerThread for creating a new user in the DB through thread.
+				SendDataHThread thread = new SendDataHThread("CreateNewUser");
+				thread.setPriority(Process.THREAD_PRIORITY_BACKGROUND);
+
+				thread.setFullUserName(mUser + "_" + mPassword + "_" + mEvent);
+				thread.setEvent(mEvent);
+				thread.setLat("0");
+				thread.setLng("0");
+				thread.setSpeed("0");
+				thread.setBearing("0");
+
+				thread.start();
+				return true;
+			}
 
 			String name = "UserLoginTask";
 
@@ -315,24 +344,6 @@ public class LoginActivity extends Activity {
 				if (adminRequest) {
 					adminRequest = false;
 					intent = new Intent(LoginActivity.this, AdminActivity.class);
-				}
-				else if (registerRequest) {
-					registerRequest = false;
-
-					// HandlerThread for creating a new user in the DB through thread.
-					SendDataHThread thread = new SendDataHThread("CreateNewUser");
-					thread.setPriority(Process.THREAD_PRIORITY_BACKGROUND);
-
-					thread.setFullUserName(mUser + "_" + mPassword + "_" + mEvent);
-					thread.setEvent(mEvent);
-					thread.setLat("0");
-					thread.setLng("0");
-					thread.setSpeed("0");
-					thread.setBearing("0");
-
-					thread.start();
-
-					intent = new Intent(LoginActivity.this, MenuActivity.class);
 				}
 				else {
 					intent = new Intent(LoginActivity.this, MenuActivity.class);
