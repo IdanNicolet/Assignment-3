@@ -84,14 +84,14 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 					if (Double.parseDouble(lat) == 0 || Double.parseDouble(lng) == 0) {
 						break;
 					}
-					String time = "0";
+					String time = i+"0";
 					LatLng latLng = new LatLng(Double.parseDouble(lat), Double.parseDouble(lng));
 
 					// Adds sailor's last data to TreeMap.
 					sortedLatLngs.put(Long.parseLong(time), latLng);
 
 					Log.i(fullUserName, "Lat: " + lat + ", Lng: " + lng);
-					break;
+				//	break;
 
 			}
 
@@ -147,9 +147,16 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 					}
 					kmlBuilder.append("\t<Placemark>\n\t\t<TimeStamp>\n");
 					long time = entry.getKey();
-					kmlBuilder.append("\t\t\t<when>" + String.valueOf(time) + "</when>\n\t\t</TimeStamp>\n");
-					kmlBuilder.append("\t\t<styleUrl>#style2</styleUrl>\n\t\t<Point>\n\t\t\t<coordinates>");
 
+                    if(time <= 100)
+                    {
+                        kmlBuilder.append("\t\t\t<when>" + String.valueOf(time) + "</when>\n\t\t</TimeStamp>\n");
+                        kmlBuilder.append("\t\t<styleUrl>#style1</styleUrl>\n\t\t<Point>\n\t\t\t<coordinates>");
+                    }
+                    else {
+                        kmlBuilder.append("\t\t\t<when>" + String.valueOf(time) + "</when>\n\t\t</TimeStamp>\n");
+                        kmlBuilder.append("\t\t<styleUrl>#style2</styleUrl>\n\t\t<Point>\n\t\t\t<coordinates>");
+                    }
 					double lat = entry.getValue().latitude;
 					double lng = entry.getValue().longitude;
 					kmlBuilder.append(String.valueOf(lng) + "," + String.valueOf(lat) + ",0.000000");
