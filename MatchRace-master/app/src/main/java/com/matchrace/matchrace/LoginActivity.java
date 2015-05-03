@@ -203,6 +203,12 @@ public class LoginActivity extends Activity {
 			etUser.setError(getString(R.string.error_invalid_user));
 			focusView = etUser;
 			cancel = true;
+		} else if (registerRequest && (mUser.equals(C.SAILOR_PREFIX +"admin") || mUser.equals(C.SAILOR_PREFIX + "Admin")))
+		{
+			etUser.setError(getString(R.string.error_admin_registration));
+			focusView = etUser;
+			registerRequest = false;
+			cancel = true;
 		}
 
 		// Check for a valid event.
@@ -275,17 +281,18 @@ public class LoginActivity extends Activity {
 	 * Represents an asynchronous login/registration task used to authenticate
 	 * the user.
 	 */
-	public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+	public class UserLoginTask extends AsyncTask<Void, Void, Integer> {
 
 		@Override
-		protected Boolean doInBackground(Void... params) {
+		protected Integer doInBackground(Void... params) {
 			if (mUser.equals("Sailoradmin") || mUser.equals("SailorAdmin")) {
 				adminRequest = true;
-				return mPassword.equals("admin") || mPassword.equals("Admin");
+				boolean ans = mPassword.equals("admin") || mPassword.equals("Admin");
+				if(ans) return 0; 	// OK
+				else return 1;		// Wrong pass
 			}
-
+			// registration handling
 			if (registerRequest) {
-
 				String url = C.URL_CLIENTS_TABLE + "UserCheck" + "&Information=" + mUser + "_" + mPassword + "_" + mEvent;
 				try {
 					InputStream is = new URL(url).openStream();
@@ -293,10 +300,9 @@ public class LoginActivity extends Activity {
 					String in = rd.readLine();
 					is.close();
 					if(in.startsWith("NotOK"))
-					{
-						//etUser.setError("User already regitered");
-						return false;
-					}
+					{ return 2;	}	// user already registered
+					else if (in.startsWith("NoEvent"))
+					{ return 3; }	// no such Event
 				}
 				catch (Exception e)
 				{e.printStackTrace(); }
@@ -306,7 +312,7 @@ public class LoginActivity extends Activity {
 				SendDataHThread thread = new SendDataHThread("CreateNewUser");
 				thread.setPriority(Process.THREAD_PRIORITY_BACKGROUND);
 
-				thread.setFullUserName(mUser + "_" + mPassword + "_" + mEvent);
+				thread.setFullUserName("new" + mUser + "_" + mPassword + "_" + mEvent);
 				thread.setEvent(mEvent);
 				thread.setLat("0");
 				thread.setLng("0");
@@ -314,7 +320,7 @@ public class LoginActivity extends Activity {
 				thread.setBearing("0");
 
 				thread.start();
-				return true;
+				return 0; // ok
 			}
 
 			String name = "UserLoginTask";
@@ -327,19 +333,22 @@ public class LoginActivity extends Activity {
 				BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 				String in = rd.readLine();
 				is.close();
-				return in.startsWith("OK");
+				boolean ans = in.startsWith("OK");
+				if(ans) return 0; 	// OK
+				else return 1;		// Wrong pass
+
 			}
 			catch (Exception e)
 			{e.printStackTrace(); }
-			return false;
+			return 1; // wring pass
 		}
 
 		@Override
-		protected void onPostExecute(final Boolean success) {
+		protected void onPostExecute(final Integer success) {
 			mAuthTask = null;
 			showProgress(false);
 
-			if (success) {
+			if (success.equals((Integer)0)) {
 				Intent intent;
 				if (adminRequest) {
 					adminRequest = false;
@@ -351,9 +360,10 @@ public class LoginActivity extends Activity {
 
 				if (!mUser.equals("Sailoradmin") && !mUser.equals("SailorAdmin")) {
 					// Updates the SharedPreferences.
-					SharedPreferences.Editor spEdit = sp.edit();
 					String fullUserName = mUser + "_" + mPassword + "_" + mEvent;
+					SharedPreferences.Editor spEdit = sp.edit();
 					spEdit.putString(C.PREFS_FULL_USER_NAME, fullUserName);
+
 					spEdit.commit();
 				}
 
@@ -364,9 +374,19 @@ public class LoginActivity extends Activity {
 				startActivity(intent);
 				finish();
 			}
-			else {
+			else if (success.equals((Integer)1)){
 				etPass.setError(getString(R.string.error_incorrect_pass_event));
 				etEvent.setError(getString(R.string.error_incorrect_pass_event));
+				etEvent.requestFocus();
+			}
+			else if (success.equals((Integer)2)) {
+				etUser.setError(getString(R.string.error_double_registration));
+				registerRequest = false;
+				etUser.requestFocus();
+			}
+			else if (success.equals((Integer)3)) {
+				etEvent.setError(getString(R.string.error_no_such_event));
+				registerRequest = false;
 				etEvent.requestFocus();
 			}
 		}

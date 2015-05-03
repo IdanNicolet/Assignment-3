@@ -3,6 +3,7 @@ package com.matchrace.matchrace;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import com.matchrace.matchrace.classes.C;
 import com.matchrace.matchrace.classes.GetBuoysTask;
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.matchrace.matchrace.modules.MyStack;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -51,6 +53,9 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 	private List<Marker> sailorMarkers = new ArrayList<Marker>();
 	private GoogleMap googleMap;
 	private TextView tvLat, tvLng, tvUser, tvSpeed, tvDirection, tvEvent;
+
+	// Lost Cordinates Stack
+//	private MyStack st = new MyStack();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +123,12 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 
 	@Override
 	public void onBackPressed() {
+		while (C.st.isEmpty())
+		{
+			SendDataHThread t = new SendDataHThread("SendGPS");
+			t.setLink(C.st.pop());
+			t.start();
+		}
 		super.onBackPressed();
 
 		// Disables the location changed code.
@@ -143,7 +154,6 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			thread.setSpeed(speed);
 			thread.setBearing(bearing);
 			thread.setEvent(event);
-
 			thread.start();
 
 			// AsyncTask for getting the sailor's locations from DB and adding them to the google map.
