@@ -203,6 +203,11 @@ public class LoginActivity extends Activity {
 			etUser.setError(getString(R.string.error_invalid_user));
 			focusView = etUser;
 			cancel = true;
+		} else if (registerRequest && (mUser.equals(C.SAILOR_PREFIX +"admin") || mUser.equals(C.SAILOR_PREFIX + "Admin")))
+		{
+			etUser.setError(getString(R.string.error_admin_registration));
+			focusView = etUser;
+			cancel = true;
 		}
 
 		// Check for a valid event.

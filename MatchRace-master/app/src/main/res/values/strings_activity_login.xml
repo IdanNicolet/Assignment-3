@@ -17,5 +17,6 @@
     <string name="error_incorrect_pass_event">The password or the event is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_double_registration">User already registered for this Event</string>
+    <string name="error_admin_registration">Admin user is forbbiden for registring</string>
 
 </resources>
