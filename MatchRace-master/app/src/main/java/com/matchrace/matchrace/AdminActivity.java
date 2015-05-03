@@ -274,6 +274,8 @@ public class AdminActivity extends FragmentActivity implements LocationListener,
 
     private void RefreshBuoys()
     {
+
+		googleMap.clear();  //setAllMap(null);
         // AsyncTask for getting the buoy's locations from DB and adding them to the google map.
         GetBuoysTask getBuoys = new GetBuoysTask("GetBuoysTask", googleMap, buoyRadiuses, event);
         getBuoys.execute(C.URL_CLIENTS_TABLE);

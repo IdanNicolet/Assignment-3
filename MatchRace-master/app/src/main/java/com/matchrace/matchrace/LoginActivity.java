@@ -207,6 +207,7 @@ public class LoginActivity extends Activity {
 		{
 			etUser.setError(getString(R.string.error_admin_registration));
 			focusView = etUser;
+			registerRequest = false;
 			cancel = true;
 		}
 
