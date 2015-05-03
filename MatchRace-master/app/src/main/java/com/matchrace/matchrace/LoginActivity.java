@@ -312,7 +312,7 @@ public class LoginActivity extends Activity {
 				SendDataHThread thread = new SendDataHThread("CreateNewUser");
 				thread.setPriority(Process.THREAD_PRIORITY_BACKGROUND);
 
-				thread.setFullUserName(mUser + "_" + mPassword + "_" + mEvent);
+				thread.setFullUserName("new" + mUser + "_" + mPassword + "_" + mEvent);
 				thread.setEvent(mEvent);
 				thread.setLat("0");
 				thread.setLng("0");
