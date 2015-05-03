@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * Created by nehorg on 5/3/15.
  */
-public class MyStack extends Stack<String>{
+public class MyStack {
     private Stack<String> st;
 
     public MyStack()
@@ -30,6 +30,4 @@ public class MyStack extends Stack<String>{
     {
         return st.isEmpty();
     }
-
-
 }

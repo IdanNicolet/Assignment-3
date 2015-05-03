@@ -8,25 +8,29 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Stack;
 
 import android.os.HandlerThread;
 import android.util.Log;
+
+import com.matchrace.matchrace.modules.MyStack;
 
 /**
  * HandlerThread for sending the data to DB.
  * 
  */
 public class SendDataHThread extends HandlerThread {
-
 	private HttpURLConnection urlConnection;
 	private String lat, lng, speed, bearing, event;
 	private String name, fullUserName;
-//	private boolean sendSuccessfull;
+	private MyStack st;
+	String link;
 
 	public SendDataHThread(String name) {
 		super(name);
 		this.name = name;
-//		sendSuccessfull = false;
+		link = null;
+		st = C.st;
 	}
 
 	@Override
@@ -38,36 +42,40 @@ public class SendDataHThread extends HandlerThread {
 	 * Creates the HTTP connection for sending data to DB.
 	 */
 	private void httpConnSendData() {
-//		while (!sendSuccessfull)
-//		{
+		try {
+			if (link == null)
+				link = C.URL_INSERT_CLIENT + "&Latitude=" + lat + "&Longitude=" + lng + "&Pressure=" + speed + "&Azimuth=" + bearing + "&Bearing=" + bearing + "&Information=" + fullUserName + "&Event=" + event + "&Time=" + System.currentTimeMillis();
+			URL url = new URL(link);
+			urlConnection = (HttpURLConnection) url.openConnection();
 			try {
-				URL url = new URL(C.URL_INSERT_CLIENT + "&Latitude=" + lat + "&Longitude=" + lng + "&Pressure=" + speed + "&Azimuth=" + bearing + "&Bearing=" + bearing + "&Information=" + fullUserName + "&Event=" + event + "&Time=" + System.currentTimeMillis());
-				urlConnection = (HttpURLConnection) url.openConnection();
-				try {
-					InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-					BufferedReader br = new BufferedReader(new InputStreamReader(in));
-					String result = br.readLine();
-					if (!result.startsWith("OK")) { // Something is wrong.
-						Log.i(name, "Not OK!");
-					} else { // Data sent.
-						Log.i(name, "OK!");
-//						sendSuccessfull = true;
+				InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+				BufferedReader br = new BufferedReader(new InputStreamReader(in));
+				String result = br.readLine();
+				if (!result.startsWith("OK")) { // Something is wrong.
+					Log.i(name, "Not OK!");
+					st.push(link);
+				} else { // Data sent.
+					Log.i(name, "OK!");
+					if (!st.isEmpty()) {
+						SendDataHThread t = new SendDataHThread("SendGPS");
+						t.setLink(st.pop());
+						t.start();
 					}
-				} catch (IOException e) {
-					Log.i(name, "IOException");
 				}
-				finally
-				{
-					urlConnection.disconnect();
-				}
-			}
-			catch (MalformedURLException e) {
-				Log.i(name, "MalformedURLException");
-			}
-			catch (IOException e) {
+			} catch (IOException e) {
 				Log.i(name, "IOException");
 			}
-//		}
+			finally
+			{
+				urlConnection.disconnect();
+			}
+		}
+		catch (MalformedURLException e) {
+			Log.i(name, "MalformedURLException");
+		}
+		catch (IOException e) {
+			Log.i(name, "IOException");
+		}
 	}
 
 	// Getters and Setters.
@@ -117,6 +125,16 @@ public class SendDataHThread extends HandlerThread {
 
 	public void setEvent(String event) {
 		this.event = event;
+	}
+
+//	public void sendStack(MyStack st)
+//	{
+//		this.st = st;
+//	}
+
+	public void setLink(String s)
+	{
+		link = s;
 	}
 
 }
