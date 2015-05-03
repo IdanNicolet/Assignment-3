@@ -21,12 +21,12 @@ public class SendDataHThread extends HandlerThread {
 	private HttpURLConnection urlConnection;
 	private String lat, lng, speed, bearing, event;
 	private String name, fullUserName;
-	private boolean sendSuccessfull;
+//	private boolean sendSuccessfull;
 
 	public SendDataHThread(String name) {
 		super(name);
 		this.name = name;
-		sendSuccessfull = false;
+//		sendSuccessfull = false;
 	}
 
 	@Override
@@ -38,8 +38,8 @@ public class SendDataHThread extends HandlerThread {
 	 * Creates the HTTP connection for sending data to DB.
 	 */
 	private void httpConnSendData() {
-		while (!sendSuccessfull)
-		{
+//		while (!sendSuccessfull)
+//		{
 			try {
 				URL url = new URL(C.URL_INSERT_CLIENT + "&Latitude=" + lat + "&Longitude=" + lng + "&Pressure=" + speed + "&Azimuth=" + bearing + "&Bearing=" + bearing + "&Information=" + fullUserName + "&Event=" + event + "&Time=" + System.currentTimeMillis());
 				urlConnection = (HttpURLConnection) url.openConnection();
@@ -51,7 +51,7 @@ public class SendDataHThread extends HandlerThread {
 						Log.i(name, "Not OK!");
 					} else { // Data sent.
 						Log.i(name, "OK!");
-						sendSuccessfull = true;
+//						sendSuccessfull = true;
 					}
 				} catch (IOException e) {
 					Log.i(name, "IOException");
@@ -67,7 +67,7 @@ public class SendDataHThread extends HandlerThread {
 			catch (IOException e) {
 				Log.i(name, "IOException");
 			}
-		}
+//		}
 	}
 
 	// Getters and Setters.
