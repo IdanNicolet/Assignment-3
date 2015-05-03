@@ -62,7 +62,15 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 					if (Double.parseDouble(lat) == 0 || Double.parseDouble(lng) == 0) {
 						continue;
 					}
-					String time = jsonObj.getString("time");
+                String time;
+                if(i==0) {
+                     time = "0";
+                }
+
+                   else{
+                     time = jsonObj.getString("time");
+                }
+
 					LatLng latLng = new LatLng(Double.parseDouble(lat), Double.parseDouble(lng));
 
 					// Adds sailor's data to TreeMap.
@@ -84,11 +92,12 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 					if (Double.parseDouble(lat) == 0 || Double.parseDouble(lng) == 0) {
 						break;
 					}
-					String time = i+"0";
+					String time = i+"1";
 					LatLng latLng = new LatLng(Double.parseDouble(lat), Double.parseDouble(lng));
 
 					// Adds sailor's last data to TreeMap.
 					sortedLatLngs.put(Long.parseLong(time), latLng);
+
 
 					Log.i(fullUserName, "Lat: " + lat + ", Lng: " + lng);
 				//	break;
