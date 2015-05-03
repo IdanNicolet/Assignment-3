@@ -18,5 +18,6 @@
     <string name="error_field_required">This field is required</string>
     <string name="error_double_registration">User already registered for this Event</string>
     <string name="error_admin_registration">Admin user is forbbiden for registring</string>
+    <string name="error_no_such_event">No such event for registration, please contact the Match Manager</string>
 
 </resources>

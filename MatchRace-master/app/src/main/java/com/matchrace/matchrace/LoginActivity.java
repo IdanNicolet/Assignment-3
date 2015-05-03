@@ -291,9 +291,8 @@ public class LoginActivity extends Activity {
 				if(ans) return 0; 	// OK
 				else return 1;		// Wrong pass
 			}
-
+			// registration handling
 			if (registerRequest) {
-
 				String url = C.URL_CLIENTS_TABLE + "UserCheck" + "&Information=" + mUser + "_" + mPassword + "_" + mEvent;
 				try {
 					InputStream is = new URL(url).openStream();
@@ -301,10 +300,9 @@ public class LoginActivity extends Activity {
 					String in = rd.readLine();
 					is.close();
 					if(in.startsWith("NotOK"))
-					{
-						//etUser.setError("User already regitered");
-						return 2;	// user alredy registered
-					}
+					{ return 2;	}	// user already registered
+					else if (in.startsWith("NoEvent"))
+					{ return 3; }	// no such Event
 				}
 				catch (Exception e)
 				{e.printStackTrace(); }
@@ -383,9 +381,13 @@ public class LoginActivity extends Activity {
 			}
 			else if (success.equals((Integer)2)) {
 				etUser.setError(getString(R.string.error_double_registration));
-//				etEvent.setError(getString(R.string.error_incorrect_pass_event));
 				registerRequest = false;
 				etUser.requestFocus();
+			}
+			else if (success.equals((Integer)3)) {
+				etEvent.setError(getString(R.string.error_no_such_event));
+				registerRequest = false;
+				etEvent.requestFocus();
 			}
 		}
 
