@@ -180,6 +180,9 @@ public class LoginActivity extends Activity {
 		mPassword = etPass.getText().toString();
 		mEvent = etEvent.getText().toString();
 
+		String lowerName = mUser.toLowerCase();
+		String lowerPass = mPassword.toLowerCase();
+
 		boolean cancel = false;
 		View focusView = null;
 
@@ -208,6 +211,16 @@ public class LoginActivity extends Activity {
 			etUser.setError(getString(R.string.error_admin_registration));
 			focusView = etUser;
 			registerRequest = false;
+				cancel = true;
+		} else if (lowerName.contains("select") || lowerName.contains("from") || lowerName.contains("where") || lowerName.contains("drop")) {
+			etUser.setError(getString(R.string.error_invalid_strings));
+			registerRequest = false;
+			focusView = etUser;
+			cancel = true;
+		} else if (lowerPass.contains("select") || lowerPass.contains("from") || lowerPass.contains("where") || lowerPass.contains("drop")) {
+			etPass.setError(getString(R.string.error_invalid_strings));
+			registerRequest = false;
+			focusView = etPass;
 			cancel = true;
 		}
 
