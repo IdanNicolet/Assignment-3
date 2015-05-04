@@ -298,7 +298,8 @@ public class LoginActivity extends Activity {
 		protected Integer doInBackground(Void... params) {
 			if (mUser.equals("Sailoradmin") || mUser.equals("SailorAdmin")) {
 				adminRequest = true;
-				boolean ans = mPassword.equals("admin") || mPassword.equals("Admin");
+				// 21232f297a57a5a743894ae4a801fc3 == md5("admin"); e3afed047b08059d0fada10f40c1e5 == md5("Admin");
+				boolean ans = mPassword.equals("21232f297a57a5a743894ae4a801fc3") || mPassword.equals("e3afed047b08059d0fada10f40c1e5");
 				if(ans) return 0; 	// OK
 				else return 1;		// Wrong pass
 			}
