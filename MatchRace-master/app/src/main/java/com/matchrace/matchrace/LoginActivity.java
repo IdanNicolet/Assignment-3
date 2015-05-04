@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -180,6 +182,9 @@ public class LoginActivity extends Activity {
 		mPassword = etPass.getText().toString();
 		mEvent = etEvent.getText().toString();
 
+		String lowerName = mUser.toLowerCase();
+		String lowerPass = mPassword.toLowerCase();
+
 		boolean cancel = false;
 		View focusView = null;
 
@@ -208,6 +213,11 @@ public class LoginActivity extends Activity {
 			etUser.setError(getString(R.string.error_admin_registration));
 			focusView = etUser;
 			registerRequest = false;
+				cancel = true;
+		} else if (lowerName.contains("select") || lowerName.contains("from") || lowerName.contains("where") || lowerName.contains("drop")) {
+			etUser.setError(getString(R.string.error_invalid_strings));
+			registerRequest = false;
+			focusView = etUser;
 			cancel = true;
 		}
 
@@ -226,6 +236,7 @@ public class LoginActivity extends Activity {
 		else {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
+			mPassword = md5(mPassword);
 			tvLoginStatusMessage.setText(R.string.login_progress_signing_in);
 			showProgress(true);
 			mAuthTask = new UserLoginTask();
@@ -287,7 +298,8 @@ public class LoginActivity extends Activity {
 		protected Integer doInBackground(Void... params) {
 			if (mUser.equals("Sailoradmin") || mUser.equals("SailorAdmin")) {
 				adminRequest = true;
-				boolean ans = mPassword.equals("admin") || mPassword.equals("Admin");
+				// 21232f297a57a5a743894ae4a801fc3 == md5("admin"); e3afed047b08059d0fada10f40c1e5 == md5("Admin");
+				boolean ans = mPassword.equals("21232f297a57a5a743894ae4a801fc3") || mPassword.equals("e3afed047b08059d0fada10f40c1e5");
 				if(ans) return 0; 	// OK
 				else return 1;		// Wrong pass
 			}
@@ -396,6 +408,26 @@ public class LoginActivity extends Activity {
 			mAuthTask = null;
 			showProgress(false);
 		}
+	}
+
+
+	public static String md5(String s) {
+		try {
+			// Create MD5 Hash
+			MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+			digest.update(s.getBytes());
+			byte messageDigest[] = digest.digest();
+
+			// Create Hex String
+			StringBuffer hexString = new StringBuffer();
+			for (int i=0; i<messageDigest.length; i++)
+				hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+			return hexString.toString();
+
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 
 }
