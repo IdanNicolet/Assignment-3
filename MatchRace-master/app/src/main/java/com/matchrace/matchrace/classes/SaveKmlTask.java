@@ -24,6 +24,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import de.micromata.opengis.kml.v_2_2_0.Kml;
+
 /**
  * AsyncTask for saving the KML file on SD memory.
  *

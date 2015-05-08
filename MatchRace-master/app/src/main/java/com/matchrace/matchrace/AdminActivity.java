@@ -32,6 +32,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import de.micromata.opengis.kml.v_2_2_0.Kml;
+
 /**
  * Administrator activity. Shows a google map with option to add buoys on it.
  *
@@ -43,6 +45,7 @@ public class AdminActivity extends FragmentActivity implements LocationListener,
 	private LocationManager locationManager;
 	private boolean firstUse = true;
 	private boolean disableLocation = false;
+
 
 	// Views.
 	private Marker currentPosition;
