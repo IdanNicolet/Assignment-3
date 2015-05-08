@@ -70,23 +70,26 @@ public class GetSailorsTask extends AsyncTask<String, Integer, Map<String, LatLn
 	}
 
 	protected void onPostExecute(Map<String, LatLng> sailorsLatLng) {
-		if (sailorsLatLng != null) {
-			// Removes from map all previous sailors.
-			if (!sailorMarkers.isEmpty()) {
-				for (Marker markerSailor : sailorMarkers) {
-					markerSailor.remove();
+		try {
+			if (sailorsLatLng != null) {
+				// Removes from map all previous sailors.
+				if (!sailorMarkers.isEmpty()) {
+					for (Marker markerSailor : sailorMarkers) {
+						markerSailor.remove();
+					}
+					sailorMarkers.clear();
 				}
-				sailorMarkers.clear();
-			}
 
-			// Adds to map new sailors with new locations.
-			for (Map.Entry<String, LatLng> entry :  sailorsLatLng.entrySet()) {
-				String sailorName = entry.getKey();
-				LatLng sailorLatLng = entry.getValue();
-				LatLng latLng  = new LatLng(sailorLatLng.latitude, sailorLatLng.longitude);
-				sailorMarkers.add(googleMap.addMarker(new MarkerOptions().position(latLng).title(sailorName).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_sailor_low))));
+				// Adds to map new sailors with new locations.
+				for (Map.Entry<String, LatLng> entry : sailorsLatLng.entrySet()) {
+					String sailorName = entry.getKey();
+					LatLng sailorLatLng = entry.getValue();
+					LatLng latLng = new LatLng(sailorLatLng.latitude, sailorLatLng.longitude);
+					sailorMarkers.add(googleMap.addMarker(new MarkerOptions().position(latLng).title(sailorName).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_sailor_low))));
+				}
 			}
-		}
+		} catch (Exception e)
+		{}
 	}
 
 }
