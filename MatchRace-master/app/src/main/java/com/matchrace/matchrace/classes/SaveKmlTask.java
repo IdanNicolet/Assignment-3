@@ -2,6 +2,7 @@ package com.matchrace.matchrace.classes;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -24,7 +25,10 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
+import de.micromata.opengis.kml.v_2_2_0.Placemark;
+import de.micromata.opengis.kml.v_2_2_0.TimeStamp;
 
 /**
  * AsyncTask for saving the KML file on SD memory.
@@ -36,6 +40,7 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 	private Context context;
 	private String name, fullUserName;
 	private int kmlVer;
+
 
 	public SaveKmlTask(Context context, String name, String fullUserName, int kmlVer) {
 		super();
@@ -121,6 +126,26 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 	}
 
 	protected void onPostExecute(Map<Long, LatLng> sortedLatLngs) {
+
+		 final Kml kml = new Kml();
+		Document document = kml.createAndSetDocument().withName("GPS_Sample");
+		for(int i=0;i<10;i++) {
+			TimeStamp t = new TimeStamp();
+			t.setWhen(new Date().toString());
+			Placemark placemark = document.createAndAddPlacemark();
+			placemark.withTimePrimitive(t).createAndSetPoint().addToCoordinates(35,32+i/1000.0,i);
+		}
+		//String file= C.APP_DIR+"try.kml";
+		//String file = "C:\\_Programmning\try.kml";
+		//File f= new File("C:\\_Programmning\try.kml");
+		//file = new File(C.APP_DIR + "KMLFiles/" + user + "_" + event + "_" + timeStamp + "_OnlyPath.kml");
+		try {
+			kml.marshal(new File("fdasf.kml"));
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+			//     Logger.getLogger(KMLFile.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		/*
 		if (sortedLatLngs != null && sortedLatLngs.size() > 1) {
 			if (kmlVer == 1) {
 				Iterator<Map.Entry<Long, LatLng>> iter = sortedLatLngs.entrySet().iterator();
@@ -301,8 +326,9 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 				else {
 					Toast.makeText(context, "ERROR creating KML file!", Toast.LENGTH_LONG).show();
 				}
+
 			}
-		}
+		}*/
 	}
 
 }
