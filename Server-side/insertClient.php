@@ -17,17 +17,16 @@ if (!mysql_select_db($db, $link)) {
     exit;
 }
 // http://matchrace.net16.net/insertClient.php?table=clients&Latitude=11&Longitude=10&Pressure=0&Azimuth=0&Bearing=0&Information=user1_bbb_1&Event=1
-$lat = $_GET["Latitude"];
-$lon = $_GET["Longitude"];
-$speed = $_GET["Pressure"];
-$azi = $_GET["Azimuth"];
-$ber = $_GET["Bearing"];
+$lat = make_safe($_GET["Latitude"]);
+$lon = make_safe($_GET["Longitude"]);
+$speed = make_safe($_GET["Pressure"]);
+$azi = make_safe($_GET["Azimuth"]);
+$ber = make_safe($_GET["Bearing"]);
 $info = explode("_", $_GET["Information"]);
-$user = $info[0];
-$password = $info[1];
-$event = $_GET["Event"];
-$time = $_GET["Time"];
-
+$user = make_safe($info[0]);
+$password = make_safe($info[1]);
+$event = make_safe($_GET["Event"]);
+$time = make_safe($_GET["Time"]);
 
 if (startsWith($user, "Sailor"))
 // register new user
@@ -118,6 +117,10 @@ function endsWith($haystack, $needle)
     return (substr($haystack, -$length) === $needle);
 }
 
-
+function make_safe($variable) 
+{
+   $variable = strip_tags(mysql_real_escape_string(trim($variable)));
+   return $variable; 
+}
 
 ?>

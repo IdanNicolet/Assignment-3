@@ -15,16 +15,16 @@ if (!mysql_select_db($db, $link)) {
     exit;
 }
 // http://matchrace.net16.net/insertClient.php?table=clients&Latitude=11&Longitude=10&Pressure=0&Azimuth=0&Bearing=0&Information=user1_bbb_1&Event=1
-$mode = $_GET["table"];
-$lat = $_GET["Latitude"];
-$lon = $_GET["Longitude"];
-$speed = $_GET["Pressure"];
-$azi = $_GET["Azimuth"];
-$ber = $_GET["Bearing"];
+$mode = make_safe($_GET["table"]);
+$lat = make_safe($_GET["Latitude"]);
+$lon = make_safe($_GET["Longitude"]);
+$speed = make_safe($_GET["Pressure"]);
+$azi = make_safe($_GET["Azimuth"]);
+$ber = make_safe($_GET["Bearing"]);
 $info = explode("_", $_GET["Information"]);
-$user = $info[0];
-$password = $info[1];
-$event = $_GET["Event"];
+$user = make_safe($info[0]);
+$password = make_safe($info[1]);
+$event = make_safe($_GET["Event"]);
 
 	$user = str_replace ("Cord", "", $user);
 	$user = str_replace ("Sailor", "", $user);
@@ -94,6 +94,8 @@ if ($mode == "clients")
 	$result = mysql_query ($sql) or die(mysql_error());
 
 	echo "{\"Positions\":[";
+if (mysql_num_rows($result) != 0)
+{
 	//for ($i = 0; $i < mysql_num_rows($result); $i++)
 	//{
 		$row = mysql_fetch_assoc($result);
@@ -109,18 +111,25 @@ if ($mode == "clients")
 		}");
 	//	if ($i != mysql_num_rows($result)-1) echo ",";
 	//}
+}
 	echo "]}";	
 
 } else if ($mode == "clientsUserCheck") {
 	
-
 		$sql = 'SELECT * FROM clients WHERE name =\'' .$user .'\' AND event = '. $info[2];
-		//echo $sql."<br>";
 		$result = mysql_query ($sql) or die(mysql_error());
-		if (mysql_num_rows($result) == 0)
-			echo "OK";
-		else
+		if (mysql_num_rows($result) != 0)
 			echo "NotOK";
+		else
+		{
+
+			$sql = 'SELECT * FROM events WHERE event = '. $info[2];
+			$result = mysql_query ($sql) or die(mysql_error());
+			if (mysql_num_rows($result) == 0)
+				echo "NoEvent";
+			else
+				echo "OK";
+		}
 
 } else {
 // return all cords
@@ -147,4 +156,10 @@ if ($mode == "clients")
 
 }
 
-?>								
+function make_safe($variable) 
+{
+   $variable = strip_tags(mysql_real_escape_string(trim($variable)));
+   return $variable; 
+}
+
+?>									
