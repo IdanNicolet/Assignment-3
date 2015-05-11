@@ -24,12 +24,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
-
-import de.micromata.opengis.kml.v_2_2_0.Document;
-import de.micromata.opengis.kml.v_2_2_0.Kml;
-import de.micromata.opengis.kml.v_2_2_0.Placemark;
-import de.micromata.opengis.kml.v_2_2_0.TimeStamp;
-
 /**
  * AsyncTask for saving the KML file on SD memory.
  *
@@ -127,24 +121,7 @@ public class SaveKmlTask extends AsyncTask<String, Integer, Map<Long, LatLng>> {
 
 	protected void onPostExecute(Map<Long, LatLng> sortedLatLngs) {
 
-		 final Kml kml = new Kml();
-		Document document = kml.createAndSetDocument().withName("GPS_Sample");
-		for(int i=0;i<10;i++) {
-			TimeStamp t = new TimeStamp();
-			t.setWhen(new Date().toString());
-			Placemark placemark = document.createAndAddPlacemark();
-			placemark.withTimePrimitive(t).createAndSetPoint().addToCoordinates(35,32+i/1000.0,i);
-		}
-		//String file= C.APP_DIR+"try.kml";
-		//String file = "C:\\_Programmning\try.kml";
-		//File f= new File("C:\\_Programmning\try.kml");
-		//file = new File(C.APP_DIR + "KMLFiles/" + user + "_" + event + "_" + timeStamp + "_OnlyPath.kml");
-		try {
-			kml.marshal(new File("fdasf.kml"));
-		} catch (FileNotFoundException ex) {
-			ex.printStackTrace();
-			//     Logger.getLogger(KMLFile.class.getName()).log(Level.SEVERE, null, ex);
-		}
+
 		/*
 		if (sortedLatLngs != null && sortedLatLngs.size() > 1) {
 			if (kmlVer == 1) {

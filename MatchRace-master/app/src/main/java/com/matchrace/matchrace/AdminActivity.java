@@ -31,9 +31,6 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-
-import de.micromata.opengis.kml.v_2_2_0.Kml;
-
 /**
  * Administrator activity. Shows a google map with option to add buoys on it.
  *
