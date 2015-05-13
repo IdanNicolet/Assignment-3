@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.matchrace.matchrace.classes.C;
-import com.matchrace.matchrace.classes.SaveKmlTask;
+//import com.matchrace.matchrace.classes.SaveKmlTask;
 
 /**
  * Menu activity. Shows the menu screen.
@@ -51,14 +51,14 @@ public class MenuActivity extends Activity implements OnClickListener {
 
 		// Initializing Buttons.
 		bMap = (Button) findViewById(R.id.bMap);
-		bKml1 = (Button) findViewById(R.id.bKml1);
-		bKml2 = (Button) findViewById(R.id.bKml2);
+//		bKml1 = (Button) findViewById(R.id.bKml1);
+//		bKml2 = (Button) findViewById(R.id.bKml2);
 		bLogout = (Button) findViewById(R.id.bLogout);
 		bExit = (Button) findViewById(R.id.bExit);
 
 		bMap.setOnClickListener(this);
-		bKml1.setOnClickListener(this);
-		bKml2.setOnClickListener(this);
+//		bKml1.setOnClickListener(this);
+//		bKml2.setOnClickListener(this);
 		bLogout.setOnClickListener(this);
 		bExit.setOnClickListener(this);
 	}
@@ -81,22 +81,22 @@ public class MenuActivity extends Activity implements OnClickListener {
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			break;
-		case R.id.bKml1:
-			bKml1.setEnabled(false);
-			Toast.makeText(this, "Please wait few seconds...", Toast.LENGTH_SHORT).show();
-
-			// AsyncTask for saving the KML file on SD memory (with time stamp).
-			SaveKmlTask saveKml1 = new SaveKmlTask(this, "SaveKmlTask", fullUserName, 1);
-			saveKml1.execute(C.URL_HISTORY_TABLE, C.URL_CLIENTS_TABLE);
-			break;
-		case R.id.bKml2:
-			bKml2.setEnabled(false);
-			Toast.makeText(this, "Please wait few seconds...", Toast.LENGTH_SHORT).show();
-
-			// AsyncTask for saving the KML file on SD memory (only path).
-			SaveKmlTask saveKml2 = new SaveKmlTask(this, "SaveKmlTask", fullUserName, 2);
-			saveKml2.execute(C.URL_HISTORY_TABLE, C.URL_CLIENTS_TABLE);
-			break;
+//		case R.id.bKml1:
+//			bKml1.setEnabled(false);
+//			Toast.makeText(this, "Please wait few seconds...", Toast.LENGTH_SHORT).show();
+//
+//			// AsyncTask for saving the KML file on SD memory (with time stamp).
+//			SaveKmlTask saveKml1 = new SaveKmlTask(this, "SaveKmlTask", fullUserName, 1);
+//			saveKml1.execute(C.URL_HISTORY_TABLE, C.URL_CLIENTS_TABLE);
+//			break;
+//		case R.id.bKml2:
+//			bKml2.setEnabled(false);
+//			Toast.makeText(this, "Please wait few seconds...", Toast.LENGTH_SHORT).show();
+//
+//			// AsyncTask for saving the KML file on SD memory (only path).
+//			SaveKmlTask saveKml2 = new SaveKmlTask(this, "SaveKmlTask", fullUserName, 2);
+//			saveKml2.execute(C.URL_HISTORY_TABLE, C.URL_CLIENTS_TABLE);
+//			break;
 		case R.id.bLogout:
 			// Updates the SharedPreferences.
 			SharedPreferences sp = getSharedPreferences(C.PREFS_USER, MODE_PRIVATE);
