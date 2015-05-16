@@ -130,10 +130,17 @@ if (mysql_num_rows($result) != 0)
 			else
 				echo "OK";
 		}
+} else if ($mode == "eventTest"){
+	$sql = 'SELECT * FROM events WHERE event ='.$event;
+	$result = mysql_query ($sql) or die(mysql_error());
 
+	if (mysql_num_rows($result) == 0)
+		echo "{\"ans\":[ {\"res\":\"FALSE\"}]}";
+	else
+		echo "{\"ans\":[ {\"res\":\"TRUE\"}]}";
 } else {
 // return all cords
-	$sql = 'SELECT * FROM cords WHERE event ='.$event .' ORDER BY time DESC';
+	$sql = 'SELECT * FROM cords WHERE event ='.$event;
 	$result = mysql_query ($sql) or die(mysql_error());
 
 	echo "{\"Positions\":[";

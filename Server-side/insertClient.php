@@ -1,6 +1,6 @@
 <?php
 
-date_default_timezone_set('Asia/Jerusalem');
+//date_default_timezone_set('Asia/Jerusalem');
 $servername = "mysql11.000webhost.com";
 $username = "a8510183_root";
 $password = "Password1";
@@ -28,10 +28,10 @@ $password = make_safe($info[1]);
 $event = make_safe($_GET["Event"]);
 $time = make_safe($_GET["Time"]);
 
-if (startsWith($user, "Sailor"))
+if (startsWith($user, "newSailor"))
 // register new user
 {
-	$user = str_replace ("Sailor", "", $user);
+	$user = str_replace ("newSailor", "", $user);
 	$sql = 'SELECT * FROM clients WHERE name=\''.$user.'\'';
 	$result = mysql_query ($sql) or die(mysql_error());
 	if (mysql_num_rows($result) == 0)
