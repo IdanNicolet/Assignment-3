@@ -37,22 +37,6 @@
         android:text="Open Map" />
 
     <Button
-        android:id="@+id/bKml1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="10"
-        android:text="Create KML File (With TimeStamp)" />
-
-    <Button
-        android:id="@+id/bKml2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="10"
-        android:text="Create KML File (Only Path)" />
-
-    <Button
         android:id="@+id/bLogout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
