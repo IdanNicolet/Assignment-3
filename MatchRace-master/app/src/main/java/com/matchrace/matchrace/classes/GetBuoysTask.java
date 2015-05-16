@@ -104,10 +104,6 @@ public class GetBuoysTask extends AsyncTask<String, Integer, Map<String, LatLng>
 			}
 
 
-
-
-
-
 			// Focus the camera on the latest buoy added to HashMap.
 			CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, C.ZOOM_LEVEL);
 			googleMap.animateCamera(cameraUpdate);

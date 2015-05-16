@@ -127,11 +127,6 @@ public class SendDataHThread extends HandlerThread {
 		this.event = event;
 	}
 
-//	public void sendStack(MyStack st)
-//	{
-//		this.st = st;
-//	}
-
 	public void setLink(String s)
 	{
 		link = s;
