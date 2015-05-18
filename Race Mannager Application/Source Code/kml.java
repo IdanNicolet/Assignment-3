@@ -6,6 +6,7 @@ import de.micromata.opengis.kml.v_2_2_0.LineString;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.Style;
 import de.micromata.opengis.kml.v_2_2_0.TimeStamp;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -51,6 +52,7 @@ public class kml extends javax.swing.JFrame {
 
     public kml() {
         initComponents();
+        jTextField1.setText("Ready to use");
     }
 
     /**
@@ -65,9 +67,12 @@ public class kml extends javax.swing.JFrame {
         eventTestField = new javax.swing.JTextField();
         TimeStampB = new javax.swing.JButton();
         OnlyPathB = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        eventTestField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         eventTestField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eventTestFieldActionPerformed(evt);
@@ -93,31 +98,47 @@ public class kml extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Gisha", 1, 18)); // NOI18N
+        jLabel1.setText("Please insert event number:");
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(OnlyPathB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(TimeStampB)
-                .addGap(55, 55, 55))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(eventTestField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(eventTestField, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(OnlyPathB, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                                .addComponent(TimeStampB)))))
+                .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(eventTestField, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(eventTestField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TimeStampB)
                     .addComponent(OnlyPathB))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,12 +164,15 @@ public class kml extends javax.swing.JFrame {
     //this function navigate to relevant function witin user choices
     private void startAppliction() {
         boolean available = false;
+        jTextField1.setBackground(Color.white);
+        jTextField1.setText("Ready to use");
         //init the event from the textFiled
         event = eventTestField.getText();
         //open save file dialog
         jFileChooser.setSelectedFile(new File("Sailor_" + event + "_" + choice + ".kml"));
         jFileChooser.showSaveDialog(this);
         file = jFileChooser.getSelectedFile();
+        
 
         try {
             available = isAvailable(event);
@@ -159,7 +183,8 @@ public class kml extends javax.swing.JFrame {
         } else if (available && choice.equalsIgnoreCase("onlyPath")) {
             JsonOnlyPath();
         } else {
-            System.out.println("Data not found");
+            jTextField1.setBackground(Color.red);
+            jTextField1.setText("Somting went worng - Try again");
         }
     }
 
@@ -198,8 +223,9 @@ public class kml extends javax.swing.JFrame {
         OnlyPath();
 
         try {
-            kml.marshal(file);
-            System.out.println("Finish");
+            kml.marshal(file);            
+            jTextField1.setBackground(Color.green);
+            jTextField1.setText("success");
             sortedLatLngs.clear();
             sortedLatLngsOpp.clear();
         } catch (FileNotFoundException ex) {
@@ -268,7 +294,8 @@ public class kml extends javax.swing.JFrame {
         TimeStamp();
         try {
             kml.marshal(file);
-            System.out.println("Finish");
+            jTextField1.setBackground(Color.green);
+            jTextField1.setText("success");
             sortedLatLngs.clear();
 
         } catch (FileNotFoundException ex) {
@@ -490,5 +517,7 @@ public class kml extends javax.swing.JFrame {
     private javax.swing.JButton OnlyPathB;
     private javax.swing.JButton TimeStampB;
     private javax.swing.JTextField eventTestField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
